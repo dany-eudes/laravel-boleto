@@ -40,4 +40,4 @@ jobs:
                     composer update --prefer-stable --prefer-dist --no-interaction
 
             -   name: Run tests
-                run: vendor/bin/phpunit -c phpunit_gt_81.xml
+                run: vendor/bin/phpunit -c phpunit_gt_81.xml --no-coverage
