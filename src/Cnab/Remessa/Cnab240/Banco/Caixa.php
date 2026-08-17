@@ -307,7 +307,7 @@ class Caixa extends AbstractRemessa implements RemessaContract
         $this->add(164, 166, strlen($this->getCodigoCliente()) == 7 ? '107' : '101');
         $this->add(167, 171, '00000');
         $this->add(172, 191, '');
-        $this->add(192, 211, Util::formatCnab('X', 'REMESSA-PRODUCAO', 20));
+        $this->add(192, 211, Util::formatCnab('X', $this->getModoTeste() ? 'REMESSA-TESTE' : 'REMESSA-PRODUCAO', 20));
         $this->add(212, 215, '');
         $this->add(216, 240, '');
 

@@ -55,6 +55,17 @@ abstract class AbstractRemessa
     protected $iRegistros = 0;
 
     /**
+     * Indica se a remessa deve ser marcada como teste/homologação, pros
+     * bancos cujo layout distingue isso num campo do header (ex.: CAIXA,
+     * 'uso_reservado_empresa', posições 192-211 do header de arquivo
+     * CNAB240 — 'REMESSA-TESTE' em teste, 'REMESSA-PRODUCAO' em produção).
+     * Sem efeito nos bancos que não implementam esse campo.
+     *
+     * @var bool
+     */
+    protected $modoTeste = false;
+
+    /**
      * Array contendo o cnab.
      *
      * @var array
@@ -258,6 +269,26 @@ abstract class AbstractRemessa
     public function setIdremessa($idremessa)
     {
         $this->idremessa = $idremessa;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getModoTeste()
+    {
+        return $this->modoTeste;
+    }
+
+    /**
+     * @param bool $modoTeste
+     *
+     * @return AbstractRemessa
+     */
+    public function setModoTeste($modoTeste)
+    {
+        $this->modoTeste = (bool) $modoTeste;
 
         return $this;
     }
